@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { OptionBtn } from './Options.styled';
 import { OptionContainer } from './Options.styled';
 import shortid from 'shortid';
-export const FeedbackOptions = ({ options, clickFeedback }) => {
+export const FeedbackOptions = ({ options, setValue }) => {
   return (
     <OptionContainer>
       {options.map(option => (
@@ -10,7 +10,7 @@ export const FeedbackOptions = ({ options, clickFeedback }) => {
           type="button"
           key={shortid.generate()}
           name={option}
-          onClick={clickFeedback}
+          onClick={() => setValue(option)}
         >
           {option}
         </OptionBtn>
@@ -21,5 +21,5 @@ export const FeedbackOptions = ({ options, clickFeedback }) => {
 
 FeedbackOptions.propTypes = {
   options: PropTypes.array.isRequired,
-  clickFeedback: PropTypes.func.isRequired,
+  setValue: PropTypes.func.isRequired,
 };
